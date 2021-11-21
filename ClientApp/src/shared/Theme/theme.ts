@@ -1,4 +1,6 @@
-import { extendTheme, theme as base } from '@chakra-ui/react';
+import {
+  extendTheme, theme as base, withDefaultColorScheme, withDefaultVariant,
+} from '@chakra-ui/react';
 
 import { config } from './foundations/config';
 import { colors } from './foundations/colors';
@@ -10,4 +12,12 @@ export const theme: ThemeProps = extendTheme({
   config,
   fonts,
   colors,
-});
+},
+withDefaultColorScheme({
+  colorScheme: 'primary',
+  components: ['Checkbox'],
+}),
+withDefaultVariant({
+  variant: 'filled',
+  components: ['Input', 'Select'],
+}));
