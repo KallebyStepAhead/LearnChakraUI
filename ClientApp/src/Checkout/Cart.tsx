@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   AspectRatio,
-  Button, Divider, Heading, HStack, Image, Text, VStack,
+  Button, Divider, Heading, HStack, Image, Text, useColorMode, useColorModeValue, VStack,
 } from '@chakra-ui/react';
 
 export function Cart() {
@@ -10,6 +10,12 @@ export function Cart() {
   const shippingPrice = 5;
   const taxes = price * 0.12;
   const total = price + shippingPrice + taxes;
+
+  const { toggleColorMode } = useColorMode();
+  const bgColor = useColorModeValue('gray.100', 'whiteAlpha.100');
+  const fgColor = useColorModeValue('gray.600', 'gray.500');
+  const imgBgColor = useColorModeValue('gray.100', 'gray.500');
+  const themeLabel = useColorModeValue('Dark', 'Light');
 
   const toEuro = (value: number) => new Intl.NumberFormat('pt-PT', {
     currency: 'EUR',
@@ -24,15 +30,19 @@ export function Cart() {
       spacing={10}
       alignItems="flex-start"
       borderRadius={4}
-      backgroundColor={['gray.50', 'gray.700']}
+      backgroundColor={bgColor}
     >
       <VStack spacing={2} alignItems="flex-start">
         <Heading>Your Cart</Heading>
         <Text>
           If the price is too hard to your eyes
           {' '}
-          <Button variant="link" colorScheme="black">
-            Try the dark theme
+          <Button
+            variant="link"
+            colorScheme="black"
+            onClick={toggleColorMode}
+          >
+            Try the {themeLabel} theme
           </Button>
         </Text>
       </VStack>
@@ -42,7 +52,7 @@ export function Cart() {
           w={24}
           ratio={1}
           borderRadius={4}
-          backgroundColor="gray.500"
+          backgroundColor={imgBgColor}
         >
           <Image src={productImg} alt="Product image" />
         </AspectRatio>
@@ -50,7 +60,7 @@ export function Cart() {
         <HStack justifyContent="space-between" w="full" alignItems="center">
           <VStack alignItems="flex-start">
             <Heading size="md">Penny board</Heading>
-            <Text color="gray.500">PNYBD123982VJAK</Text>
+            <Text color={fgColor}>PNYBD123982VJAK</Text>
           </VStack>
 
           <Heading size="sm">{toEuro(price)}
@@ -60,17 +70,17 @@ export function Cart() {
 
       <VStack w="full">
         <HStack alignItems="center" justifyContent="space-between" w="full">
-          <Text color="gray.400">Subtotal</Text>
+          <Text color={fgColor}>Subtotal</Text>
           <Heading size="sm">{toEuro(price)}</Heading>
         </HStack>
 
         <HStack alignItems="center" justifyContent="space-between" w="full">
-          <Text color="gray.400">Shipping</Text>
+          <Text color={fgColor}>Shipping</Text>
           <Heading size="sm">{toEuro(shippingPrice)}</Heading>
         </HStack>
 
         <HStack alignItems="center" justifyContent="space-between" w="full">
-          <Text color="gray.400">Taxes (Estimated)</Text>
+          <Text color={fgColor}>Taxes (Estimated)</Text>
           <Heading size="sm">{toEuro(taxes)}</Heading>
         </HStack>
       </VStack>
@@ -78,7 +88,7 @@ export function Cart() {
       <Divider />
 
       <HStack alignItems="center" justifyContent="space-between" w="full">
-        <Text color="gray.400">Total</Text>
+        <Text color={fgColor}>Total</Text>
         <Heading size="lg">{toEuro(total)}</Heading>
       </HStack>
 
