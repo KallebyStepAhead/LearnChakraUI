@@ -1,10 +1,13 @@
-import { extendTheme, ThemeConfig } from '@chakra-ui/react';
+import { extendTheme, theme as base } from '@chakra-ui/react';
 
-const config: ThemeConfig = {
-  initialColorMode: 'system',
-  useSystemColorMode: true,
-};
+import { config } from './foundations/config';
+import { colors } from './foundations/colors';
+import { fonts } from './foundations/fonts';
 
-export const theme = extendTheme({
+export type ThemeProps = Partial<typeof base>
+
+export const theme: ThemeProps = extendTheme({
   config,
+  fonts,
+  colors,
 });
