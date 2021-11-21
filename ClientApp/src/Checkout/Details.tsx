@@ -68,7 +68,7 @@ export function Details() {
         </GridItem>
 
         <GridItem colSpan={2}>
-          <Button size="lg" w="full">
+          <Button colorScheme="primary" size="lg" w="full">
             Place order
           </Button>
         </GridItem>
