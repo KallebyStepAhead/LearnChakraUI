@@ -1,13 +1,11 @@
 import React from 'react';
-import { Container } from './styles';
+import { Container } from '@chakra-ui/react';
+import { Checkout } from '../Checkout';
 
-type AppProps = {
-}
-
-export function App({}: AppProps) {
+export function App() {
   return (
-    <Container>
-      Hello :)
+    <Container maxW="container.xl" p={0}>
+      <Checkout />
     </Container>
   );
 }
