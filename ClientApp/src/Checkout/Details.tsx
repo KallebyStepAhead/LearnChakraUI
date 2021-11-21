@@ -4,10 +4,12 @@ import {
   Checkbox,
   FormControl,
   FormLabel,
-  GridItem, Heading, Input, Select, SimpleGrid, Text, VStack,
+  GridItem, Heading, Input, Select, SimpleGrid, Text, useBreakpointValue, VStack,
 } from '@chakra-ui/react';
 
 export function Details() {
+  const colSpanValue = useBreakpointValue({ base: 2, md: 1 });
+
   return (
     <VStack
       w="full"
@@ -21,15 +23,15 @@ export function Details() {
         <Text>If you already have an account, click here to log in.</Text>
       </VStack>
 
-      <SimpleGrid columns={2} spacing={2}>
-        <GridItem colSpan={1}>
+      <SimpleGrid columns={2} spacing={2} w="full">
+        <GridItem colSpan={colSpanValue}>
           <FormControl>
             <FormLabel>First Name</FormLabel>
             <Input placeholder="Kalleby" />
           </FormControl>
         </GridItem>
 
-        <GridItem colSpan={1}>
+        <GridItem colSpan={colSpanValue}>
           <FormControl>
             <FormLabel>Last Name</FormLabel>
             <Input placeholder="Santos" />
@@ -43,14 +45,14 @@ export function Details() {
           </FormControl>
         </GridItem>
 
-        <GridItem colSpan={1}>
+        <GridItem colSpan={colSpanValue}>
           <FormControl>
             <FormLabel>City</FormLabel>
             <Input placeholder="Lisboa" />
           </FormControl>
         </GridItem>
 
-        <GridItem colSpan={1}>
+        <GridItem colSpan={colSpanValue}>
           <FormControl>
             <FormLabel>Country</FormLabel>
             <Select>
